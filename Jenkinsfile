@@ -3,13 +3,13 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/AhmedJabareen96/skill-swap-front.git'
+                git 'https://github.com/AhmedJabareen96/skill-swap-back.git'
             }
         }
         stage('Build and Push Docker Image') {
         environment {
                         registry = 'docker-registry-url'
-                        imageName = 'skillswap-front'
+                        imageName = 'skillswap-back'
                         imageTag = 'latest'
                     }
             steps {
