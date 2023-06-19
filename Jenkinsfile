@@ -8,14 +8,14 @@ pipeline {
         }
         stage('Build and Push Docker Image') {
         environment {
-                        registry = 'docker-registry-url'
+                        registry = 'ahmedjabareen/skillswap-back'
                         imageName = 'skillswap-back'
                         imageTag = 'latest'
                     }
             steps {
                 script {
                     def dockerImage = docker.build(imageName)
-                    docker.withRegistry(registry, 'docker-credentials-id') {
+                    docker.withRegistry(registry, 'docker-key') {
                         dockerImage.push("${env.BUILD_NUMBER}")
                         dockerImage.push("latest")
                     }
